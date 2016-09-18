@@ -1,0 +1,8 @@
+#!/bin/bash
+
+scrot "lock.png"
+mogrify -resize 10% lock.png
+mogrify -sample 1000% lock.png
+
+xset dpms force off
+i3lock -i lock.png

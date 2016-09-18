@@ -1,0 +1,6 @@
+#!/bin/bash
+
+percent=$(printf "%.0f" $(xbacklight))
+
+echo "${percent}%"
+

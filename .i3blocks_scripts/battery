@@ -1,0 +1,28 @@
+#!/bin/bash
+
+percentage=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep percentage | awk {'print $2'} | grep -o '[0-9]*')
+
+charging=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep state | awk {'print $2'})
+
+
+battery_color="#ffffff"
+
+if [[ "$percentage" -gt 60 ]]; then
+	battery_color="#ffff00"
+elif [[ "$percentage" -gt 25 ]]; then
+	battery_color="#00ff00"
+else
+	battery_color="#ff0000"
+fi
+
+if [[ "$charging" == "discharging" ]]; then
+	charging="-"
+elif [[ "$charging" == "fully-charged" ]]; then
+	charging=""
+	battery_color="#ffffff"
+else
+	charging="+"
+fi
+
+echo $charging$percentage
+
