@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --bg-tile '/home/lambert/pictures/sol_ubuntu_r.png' 
